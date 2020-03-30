@@ -1,4 +1,5 @@
 #include "Repo.h"
+#include<iostream>
 using namespace std;
 
 Repo:: Repo(){
@@ -22,31 +23,22 @@ int Repo:: findExpense(const FamilyExpenses &fe) {
     return -1;
 }
 
-void Repo:: deleteExpense(FamilyExpenses fe) {
+void Repo:: deleteExpense(const FamilyExpenses& fe) {
     int start_contor = findExpense(fe);
-    if (start_contor>=0 && start_contor <= this->getSize()-1 )
+    for (int i = start_contor; i <= this->noExpenses - 2; i++)
+        this->family_expenses[i] = this->family_expenses[i + 1];
+        this->noExpenses--;
+
+
+}
+
+void Repo:: updateExpense (int position, const FamilyExpenses& fe){
+    if(position < 0 || position > this->getSize()-1)
         {
-            for (int i=start_contor; i<this->getSize()-1; i++)
-            {
-                family_expenses[i] = family_expenses[i+1];
-                noExpenses--;
-            }
+            cout<<"There isn't any expense on that position"<<endl;
         } else{
-        cout<<"We haven't found any expense!"<<endl;
+        family_expenses[position] = fe;
     }
-
-}
-
-void Repo:: updateExpenseDay(int position, int new_day) {
-    family_expenses[position].setDay(new_day);
-}
-
-void Repo:: updateExpenseSum(int position, int new_sum) {
-    family_expenses[position].setSum(new_sum);
-}
-
-void Repo:: updateExpenseType(int position, char *new_type) {
-    family_expenses[position].setType(new_type);
 }
 
 int Repo:: getSize(){

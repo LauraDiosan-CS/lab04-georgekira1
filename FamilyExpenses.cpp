@@ -1,6 +1,11 @@
 #include "FamilyExpenses.h"
-#include<iostream>
-#include<cstring>
+#include <cstddef>
+#include <ostream>
+#include <iostream>
+#include <cstring>
+
+
+using namespace std;
 
 
 FamilyExpenses:: FamilyExpenses(){
@@ -52,7 +57,7 @@ void FamilyExpenses:: setSum(int a_sum) {
     this->sum = a_sum;
 }
 
-void FamilyExpenses:: setType(char *a_type) {
+void FamilyExpenses:: setType(char* a_type) {
     if (this->type != nullptr)
         {
             delete [] this->type;
@@ -72,5 +77,18 @@ FamilyExpenses& FamilyExpenses:: operator=(const FamilyExpenses& fe){
 bool FamilyExpenses:: operator==(const FamilyExpenses& fe) {
     return (this->day == fe.day) && (this->sum = fe.sum) && (strcmp(this->type, fe.type) == 0);
 }
+
+ostream& operator<<(ostream& os, const FamilyExpenses& e)
+{
+    os << e.day << " " <<e.sum<<" "<<e.type;
+    return os;
+}
+
+/*ostream& operator>>(ostream& os, const FamilyExpenses& e)
+{
+    os >> e.day >> " " >>e.sum<<" ">>e.type;
+    return os;
+}
+ */
 
 

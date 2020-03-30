@@ -13,10 +13,8 @@ class Repo {
         ~Repo();
         void addFamilyExpense(const FamilyExpenses& fe);
         int findExpense(const FamilyExpenses& fe);
-        void deleteExpense(FamilyExpenses fe);
-        void updateExpenseDay(int position, int new_day);
-        void updateExpenseSum(int position, int new_sum);
-        void updateExpenseType(int position, char* new_type);
+        void deleteExpense(const FamilyExpenses& fe);
+        void updateExpense(int position, const FamilyExpenses& fe);
         int getSize();
         FamilyExpenses* getAll();
 

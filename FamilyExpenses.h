@@ -1,7 +1,10 @@
 #ifndef LAB_4_5_FAMILYEXPENSES_H
 #define LAB_4_5_FAMILYEXPENSES_H
-#include<iostream>
-#include<cstring>
+#pragma once
+#include <ostream>
+#include <vector>
+
+using namespace std;
 
 class FamilyExpenses {
     private:
@@ -21,6 +24,8 @@ class FamilyExpenses {
         void setType(char* type);
         FamilyExpenses& operator=(const FamilyExpenses& fe);
         bool operator==(const FamilyExpenses& fe);
+        friend ostream& operator<<(ostream& os, const FamilyExpenses& e);
+        //friend ostream& operator>>(ostream& os, const FamilyExpenses& e);
 
 
 
